@@ -6,6 +6,7 @@
   --color3: #1f1a36;
   --color4: #03bfbc;
   --color5: #797a91;
+  --box-shadow: rgba(23, 23, 24, 0.2) 0px 8px 24px;
 }
 
 * {
@@ -56,7 +57,8 @@ button:hover {
 }
 
 .contacts-search::placeholder {
-  color: var(--color4);
+  color: var(--color5);
+  opacity: 0.5;
 }
 
 .contacts-list {
@@ -72,7 +74,7 @@ button:hover {
 .contact-card {
   background-color: var(--color2);
   border-radius: 8px;
-  box-shadow: rgba(23, 23, 24, 0.2) 0px 8px 24px;
+  box-shadow: var(--box-shadow);
 }
 
 .contact-card-details {
@@ -110,4 +112,13 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.contact-not-found-card {
+  height: 200px;
+  background-color: var(--color2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow);
 }
