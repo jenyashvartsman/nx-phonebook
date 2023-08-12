@@ -6,9 +6,25 @@ interface ContactCardProps {
 
 const ContactCard = ({ contact }: ContactCardProps) => {
   return (
-    <>
-      {contact.firstName} {contact.lastName}
-    </>
+    <div className="contact-card">
+      <div className="contact-card-details">
+        <div className="contact-card-avatar">
+          <img src={contact.avatarUrl} alt={contact.firstName} />
+        </div>
+
+        <h4 className="contact-card-name">
+          {contact.firstName} {contact.lastName}
+        </h4>
+
+        <h5 className="contact-card-city">{contact.address?.city}</h5>
+
+        <p className="contact-card-phone">{contact.phoneNumber}</p>
+      </div>
+
+      <div className="contact-card-view">
+        <button>View</button>
+      </div>
+    </div>
   );
 };
 

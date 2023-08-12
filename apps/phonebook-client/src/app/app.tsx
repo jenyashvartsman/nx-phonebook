@@ -16,7 +16,7 @@ export function App() {
   }, []);
 
   return (
-    <div>
+    <div className="contacts-wrapper">
       <ContactsSearch />
       <ContactsList contacts={contacts} />
     </div>

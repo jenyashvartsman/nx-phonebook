@@ -1,5 +1,5 @@
 const ContactsSearch = () => {
-  return <div>contacts search</div>;
+  return <input className="contacts-search" type="text" placeholder="Search" />;
 };
 
 export default ContactsSearch;

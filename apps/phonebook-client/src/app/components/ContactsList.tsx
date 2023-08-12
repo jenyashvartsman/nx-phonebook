@@ -7,7 +7,7 @@ interface ContactsListProps {
 
 const ContactsList = ({ contacts }: ContactsListProps) => {
   return (
-    <ul>
+    <ul className="contacts-list">
       {contacts.map((contact) => (
         <li key={contact.id}>
           <ContactCard contact={contact} />
