@@ -7,6 +7,8 @@
   --color4: #03bfbc;
   --color5: #797a91;
   --box-shadow: rgba(23, 23, 24, 0.2) 0px 8px 24px;
+  --contact-view-width: 550px;
+  --contact-view-width: 450px;
 }
 
 * {
@@ -38,10 +40,36 @@ button:hover {
   cursor: pointer;
 }
 
+.app-wrapper {
+  position: relative;
+}
+
+.contact-view-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  background-color: var(--color2);
+  box-shadow: var(--box-shadow);
+  transition: width 0.4s ease-in;
+}
+
 .contacts-wrapper {
+  position: absolute;
+  inset: 0;
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px 40px;
+  transition: right 0.4s ease-in;
+}
+
+.app-wrapper.contact-view-active .contact-view-wrapper {
+  width: var(--contact-view-width);
+}
+
+.app-wrapper.contact-view-active .contacts-wrapper {
+  right: var(--contact-view-width);
 }
 
 .contacts-search {
@@ -121,4 +149,38 @@ button:hover {
   align-items: center;
   justify-content: center;
   box-shadow: var(--box-shadow);
+}
+
+.contact-view {
+  width: var(--contact-view-width);
+  height: 100%;
+  position: relative;
+}
+
+.contact-view-avatar {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 25px;
+}
+
+.contact-view-name {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.contact-view-phone {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-view-address {
+  text-align: center;
+}
+
+.contact-view-close {
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  width: 80%;
 }

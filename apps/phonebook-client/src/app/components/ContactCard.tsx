@@ -2,9 +2,10 @@ import { ContactDto } from '@nx-phonebook/dto';
 
 interface ContactCardProps {
   contact: ContactDto;
+  contactViewClick: () => void;
 }
 
-const ContactCard = ({ contact }: ContactCardProps) => {
+const ContactCard = ({ contact, contactViewClick }: ContactCardProps) => {
   return (
     <div className="contact-card">
       <div className="contact-card-details">
@@ -22,7 +23,7 @@ const ContactCard = ({ contact }: ContactCardProps) => {
       </div>
 
       <div className="contact-card-view">
-        <button>View</button>
+        <button onClick={contactViewClick}>View</button>
       </div>
     </div>
   );

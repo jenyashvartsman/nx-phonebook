@@ -3,11 +3,17 @@ import ContactsList from './components/ContactsList';
 import ContactsSearch from './components/ContactsSearch';
 import { ContactDto } from '@nx-phonebook/dto';
 import { getContacts } from './api/contacts.api';
+import ContactView from './components/ContactView';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function App() {
   const [contacts, setContacts] = useState<ContactDto[]>([]);
   const [search, setSearch] = useState<string>('');
+  const [selectedContact, setSelectedContact] = useState<ContactDto | null>(
+    null
+  );
+  const [selectedContactActive, setSelectedContactActive] =
+    useState<boolean>(false);
+
   const filteredContacts = useMemo(
     () =>
       contacts.filter((contact) =>
@@ -25,11 +31,34 @@ export function App() {
     })();
   }, []);
 
+  const openContactView = (contact: ContactDto): void => {
+    setSelectedContact(contact);
+    setSelectedContactActive(
+      !selectedContactActive || contact.id !== selectedContact?.id
+    );
+  };
+
   return (
-    <div className="contacts-wrapper">
-      <ContactsSearch onSearchChange={setSearch} />
-      <ContactsList contacts={filteredContacts} />
-    </div>
+    <main
+      className={`app-wrapper ${
+        selectedContactActive && 'contact-view-active'
+      }`}
+    >
+      <div className="contacts-wrapper">
+        <ContactsSearch onSearchChange={setSearch} />
+        <ContactsList
+          contacts={filteredContacts}
+          contactViewClick={openContactView}
+        />
+      </div>
+
+      <div className="contact-view-wrapper">
+        <ContactView
+          contact={selectedContact}
+          onCloseClick={() => setSelectedContactActive(false)}
+        />
+      </div>
+    </main>
   );
 }
 
